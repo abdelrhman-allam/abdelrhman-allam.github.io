@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <style>
+           .button-success,
+        .button-error,
+        .button-warning,
+        .button-secondary {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-success {
+            background: rgb(28, 184, 65);
+            /* this is a green */
+        }
+
+        .button-error {
+            background: rgb(202, 60, 60);
+            /* this is a maroon */
+        }
+
+        .button-warning {
+            background: rgb(223, 117, 20);
+            /* this is an orange */
+        }
+
+        .button-secondary {
+            background: rgb(66, 184, 221);
+            /* this is a light blue */
+        }
+        /* canvas, div {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width: auto;
+        } */
+        /* .center {
+            margin: auto;
+            width: auto;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        } */
+
+
+
+
+.purple-square-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+    </style>
+    <title>Visual Algorithmes (JS)</title>
+</head>
+
+<body>
+    <div class="purple-square-container">
+    <h3>Grid Visualizer Canvas</h3></div>
+    
+    <div class="purple-square-container">
+        
+    <div class="pure-g">
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                
+            <button id='btnRandom' type="button" class="button-secondary  pure-button">Random</button>
+            <select id='drpSort'>
+                <option value="bubble">Bubble Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="selection">Selection Sort (TODO)</option>
+                <option value="mergeSort">Merge Sort</option>
+                <option value="quickSort">Quick Sort</option>
+            </select>
+            <button id='btnStart' type="button" class="button-success pure-button">start</button>
+        </div>
+        <div class="pure-control-group">
+        <div class="pure-u-1-2">
+            
+            <canvas class="rounded" id="board" style="background-color: beige;" />
+            </fieldset></form>
+        </div>
+    </div>
+    </div>
+</div>
+    <script src="render.js"></script>
+    <script>
+        (async () => {
+            var visual = new VisualBoard(16, 16, 32, 1000 / 12);
+            (document.getElementById('btnRandom')).addEventListener('click', function (e) {
+                visual.random();
+            });
+
+            (document.getElementById('btnStart')).addEventListener('click', function (e) {
+                let selected = document.getElementById("drpSort").value
+                if (selected == 'bubble') visual.start();
+                else if (selected == 'insertion') visual.insertionSort();
+                else if (selected == 'selection') visual.selectionSort();
+                else if (selected == 'mergeSort') visual.mergeSort();
+                else if (selected == 'quickSort') visual.quickSort();
+
+            })
+
+
+        })();        
+    </script>
+</body>
+
+</html>
