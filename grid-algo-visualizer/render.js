@@ -15,14 +15,14 @@
 
         this.random = function random() {
 
-            const r = 50+Math.floor(Math.random() * 200);
-            const g = 50+Math.floor(Math.random() * 200);
+            const r = Math.floor(Math.random() * 200);
+            const g = Math.floor(Math.random() * 200);
             const b = Math.floor(Math.random() * 255);
             this.rgba = "rgba(" + r + "," + g + "," + b +","; //rgba(135,26,31,0.4286748831988356)
 
             this.board = new Array(row * col);
             for (var j = 0; j < this.board.length; j++) {
-                this.board[j] = (parseFloat(Math.random()).toFixed(2));
+                this.board[j] =  +(parseFloat(Math.random()).toFixed(2));
             }
 
             this.render();
